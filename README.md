@@ -1,29 +1,16 @@
-# Stormpath React + Express Fullstack Example Project
+# Creating a website to connect job owners and cnc programmers
 
-This repository is an example fullstack web application using React on the
-front-end and Express.js as your back-end server. It uses [express-stormpath][]
-and [stormpath-sdk-react][] to authenticate users, protect your server API,
-and render default login and registration screens in your React application.
+## prereqs 
+1. Node
+2. Mongo
 
-## 1. Getting Started
-
-To run this example project on your local computer, you will need to have
-[Node.js][] installed and a [Stormpath][] tenant account.
-If you don't have a Stormpath account, sign up for a free account at [https://api.stormpath.com/register](https://api.stormpath.com/register).
-
-## 2. Installation
-
-Clone this repository, then using a terminal, navigate to the directory and run the following:
+## installation
 
 ```bash
 $ npm install
 ```
 
-## 3. Gather Stormpath Configuration
-
-You'll need to [Download an API Key Pair](https://docs.stormpath.com/rest/product-guide/latest/quickstart.html#create-an-api-key-pair) from the [Stormpath Admin Console][], and find the **Application Href** (also called **REST URL**) of the Application that you will use for your project. The default application is called "My Application" and you can use that to get started.
-
-## 4. Provide Configuration To Your Application
+##You'll need a stormpath.com api key
 
 Provide the **API Key ID**, **API Key Secret**, and **Application Href** to your environment, with one of these strategies:
 
