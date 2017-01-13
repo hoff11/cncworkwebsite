@@ -10,7 +10,7 @@
 $ npm install
 ```
 
-##You'll need a stormpath.com api key
+##you'll need a stormpath.com api key
 
 Provide the **API Key ID**, **API Key Secret**, and **Application Href** to your environment, with one of these strategies:
 
@@ -41,7 +41,7 @@ application:
   href: https://api.stormpath.com/v1/applications/XXXX
 ```
 
-##Usage
+##usage
 
 To start the server, run this command in the folder:
 
