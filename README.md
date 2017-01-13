@@ -50,7 +50,6 @@ $ mongod
 $ npm start
 ```
 
-If the server is able to start with your configuration, you will see this in
-your terminal:
+
 
 
