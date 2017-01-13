@@ -41,34 +41,16 @@ application:
   href: https://api.stormpath.com/v1/applications/XXXX
 ```
 
-## 4. Usage
+##Usage
 
 To start the server, run this command in the folder:
 
 ```bash
+$ mongod
 $ npm start
 ```
 
 If the server is able to start with your configuration, you will see this in
 your terminal:
 
-```bash
-Stormpath Ready
-Application running at http://localhost:3000
-```
 
-The application should now be running in your browser at [http://localhost:3000](http://localhost:3000).
-
-## Support
-
-We're here to help if you get stuck.  There are several ways that you can get in touch with a member of our team:
-
-* Send an email to [support@stormpath.com](mailto:support@stormpath.com)
-* Open a Github Issue on this repository.
-* Join us on our Slack channel: [https://talkstormpath.shipit.xyz/](https://talkstormpath.shipit.xyz/)
-
-[Node.js]: https://nodejs.org
-[Stormpath]: https://stormpath.com
-[Stormpath Admin Console]: https://api.stormpath.com
-[stormpath-sdk-react]: https://github.com/stormpath/stormpath-sdk-react
-[express-stormpath]: https://github.com/stormpath/express-stormpath
