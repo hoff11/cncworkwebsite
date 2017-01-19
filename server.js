@@ -44,16 +44,43 @@ app.use(stormpath.init(app, {
     register: {
       form: {
         fields: {
-          color: {
+          describes: {
             enabled: true,
-            label: 'Color',
-            placeholder: 'E.g. blue',
+            label: 'Title',
+            placeholder: 'e.g. employer, seeker',
+            required: true,
             type: 'text'
           }
         }
       }
     }
+    postRegistrationHandler: function (account, req, res, next) {
+    var seekerHref = config.SEEKERS_HREF;
+    var employerHref = config.EMPLOYERS_HREF;
+
+    account.getCustomData(function(err, customData) {
+        if (customData.describes === "seeker") {
+            //Adding to seeker group
+            account.addToGroup(seekerHref, function(err, membership) {
+                console.log(membership);
+            });
+        } else if (customData.describes === "employers") {
+            //Adding to the employer group
+            account.addToGroup(employerHref, function(err, membership) {
+                console.log(membership);
+            });
+        }
+
+        customData.remove('describes');
+        customData.save(function(err) {
+            if (err) throw err;
+        });
+    });
+
+    next();
+    }  
   }));
+
 
 app.post('/me', bodyParser.json(), stormpath.loginRequired, function (req, res) {
   function writeError(message) {

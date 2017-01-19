@@ -1,5 +1,6 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
+import { RegistrationForm, Link } from 'react-router';
 
 export default class RegisterOptionsPage extends React.Component {
 	render() {
@@ -16,14 +17,15 @@ export default class RegisterOptionsPage extends React.Component {
           				<div className="col-md-6">
           					<h3> Are you a job owner that needs to get a program made? </h3>
           					<br />
-          					<a class="btn btn-default" Link to="/register" role="button">Lets Go</a>
+          					<Link to="/register" role="button">Lets Go</Link>
           				</div>
           				<div className="col-md-6">
           					<h3> Are you looking to find some CNC work? </h3>
           					<br />
-          					<a class="btn btn-default" Link to="/register" role="button">Get to Work!</a>
+          					{/*<a class="btn btn-default" Link to="/register" role="button">Get to Work!</a>*/}
           				</div>
           			</div>
+                
           	</div>
       </DocumentTitle>	
  		);
