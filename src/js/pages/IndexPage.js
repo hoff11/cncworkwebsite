@@ -34,21 +34,23 @@ export default class IndexPage extends React.Component {
           <div className="row">
             <div className="col-md-8">
               <p>
-                <strong>Do you need something programmed?</strong>
+                <strong>PROGRAMMING JOBS</strong>
               </p>
               <ol className="lead">
-                <li><Link to="#">2 Axis , Prototrack , Lathe</Link></li>
-                <li><Link to="#">3 Axis , Mill , Haas , Kurt Vise</Link></li>
-                <li><Link to="#">Multi Axis , Mill , Mori Seki , Kurt Vise</Link></li>
+                <li><Link to="#">2 Axis | Lathe | Prototrack</Link></li>
+                <li><Link to="#">3 Axis | Mill | Haas | Kurt Vise</Link></li>
+                <li><Link to="#">Multi Axis | Mill | Mori Seki | Kurt Vise</Link></li>
+                <li><Link to="#">G-Code | Mill | Haas | Kurt Vise</Link></li>
+                <li><Link to="#">2 Axis | Lathe | Okuma</Link></li>
               </ol>
               <hr />
               <p>
                 <strong>Are you a programmer?</strong>
               </p>
               <ol className="lead">
-                <li><Link to="#">LFW, Chris, Journeyman, Mill, Lathe, Multi Axis, Multi Spindle</Link></li>
-                <li><Link to="#">LFW, Mike, Greenhorn, Mill</Link></li>
-                <li><Link to="#">Busy, Tome, Mid Level, Mill, Lathe</Link></li>
+                <li><Link to="#">LFW | Chris | Journeyman | Mill, Lathe, Multi Axis, Multi Spindle</Link></li>
+                <li><Link to="#">LFW | Mike | Greenhorn | Mill</Link></li>
+                <li><Link to="#">Busy | Tom | Mid Level | Mill, Lathe</Link></li>
               </ol>
             </div>
             <div className="col-md-4">Something.</div>
