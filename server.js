@@ -32,21 +32,20 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use('/css', express.static(__dirname + '/src/css'));
 
 app.use(stormpath.init(app, {
-  // Disable logging until startup, so that we can catch errors
-  // and display them nicely.
-  debug: 'none',
+  expand: {
+    customData: true
+  },
   web: {
-    produces: ['application/json'],
-    me: {
-      enabled: true
-      }
-    },
+    // Add input field called 'describes' to registration form.
+    // User must enter in 'seeker' or 'employer'. This info will be saved to
+    // user's account automatically when he registers.
     register: {
       form: {
         fields: {
           describes: {
-            enabled: true,
-            label: 'Title',
+            enabled: false,
+            label: 'Position',
+            name: 'describes',
             placeholder: 'e.g. employer, seeker',
             required: true,
             type: 'text'
@@ -54,32 +53,37 @@ app.use(stormpath.init(app, {
         }
       }
     }
-    postRegistrationHandler: function (account, req, res, next) {
-    var seekerHref = config.SEEKERS_HREF;
-    var employerHref = config.EMPLOYERS_HREF;
+  },
+  // After the user registers, inspect his custom data and see if he entered in
+  // 'seeker' or 'employer'
+  // Add him to the appropriate group depending on the value in custom data.
+  postRegistrationHandler: function (account, req, res, next) {
+    var seekerHref = 'https://api.stormpath.com/v1/groups/1R92UrB4Rn1EJpMpTvP6uW';
+    var employerHref = 'https://api.stormpath.com/v1/groups/1kIrveqKGm2KVNkWoWwV5E';
 
     account.getCustomData(function(err, customData) {
-        if (customData.describes === "seeker") {
-            //Adding to seeker group
-            account.addToGroup(seekerHref, function(err, membership) {
-                console.log(membership);
-            });
-        } else if (customData.describes === "employers") {
-            //Adding to the employer group
-            account.addToGroup(employerHref, function(err, membership) {
-                console.log(membership);
-            });
-        }
-
-        customData.remove('describes');
-        customData.save(function(err) {
-            if (err) throw err;
+      if (customData.describes === "seeker") {
+        //Adding to seeker group
+        account.addToGroup(seekerHref, function(err, membership) {
+          console.log('Added user to seeker group:', membership);
         });
+      } else if (customData.describes === "employer") {
+        //Adding to the employer group
+        account.addToGroup(employerHref, function(err, membership) {
+          console.log('Added user to employer group:',membership);
+        });
+      }
+
+      // Remove the value from custom data (since the user is now in the 'seeker' or 'employer' group)
+      customData.remove('describes');
+      customData.save(function(err) {
+        if (err) throw err;
+      });
     });
 
     next();
-    }  
-  }));
+  }
+}));
 
 
 app.post('/me', bodyParser.json(), stormpath.loginRequired, function (req, res) {
